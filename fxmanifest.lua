@@ -6,5 +6,5 @@ author "Walter399"
 description "Greenzone"
 version "1.0"
 
-client_scripts {"client/*.lua"}
+client_scripts {"client.lua"}
 shared_scripts {"@ox_lib/init.lua", "config.lua"}
