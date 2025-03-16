@@ -20,6 +20,7 @@ Citizen.CreateThread(function()
             if not inZone then
                 inZone = true
                 exports.ox_lib:notify({
+                    title = "Greenzone - Status",
                     description = "You have entered a green zone.",
                     position = "top",
                     type = "inform"
@@ -46,6 +47,7 @@ Citizen.CreateThread(function()
                 inZone = false
                 currentZone = nil
                 exports.ox_lib:notify({
+                    title = "Greenzone - Status",
                     description = "You have left the green zone.",
                     position = "top",
                     type = "inform"
