@@ -9,8 +9,7 @@ Citizen.CreateThread(function()
         local zoneNameFound = nil
 
         for zoneName, zoneData in pairs(Config.Greenzone) do
-            local distance = #(pos - zoneData.coords)
-            if distance < zoneData.radius then
+            if #(pos - zoneData.coords) < zoneData.radius then
                 zoneFound = true
                 zoneNameFound = zoneName
                 break
@@ -20,11 +19,10 @@ Citizen.CreateThread(function()
         if zoneFound then
             if not inZone then
                 inZone = true
-                currentZone = zoneNameFound
                 exports.ox_lib:notify({
-                    description = "You have entered a green zone: " .. zoneNameFound,
-                    type = "error",
-                    duration = 3000
+                    description = "You have entered a green zone.",
+                    position = "top",
+                    type = "inform"
                 })
             end
 
@@ -40,17 +38,17 @@ Citizen.CreateThread(function()
                 SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
             end
 
-            DisableControlAction(0, 24, true) 
-            DisableControlAction(0, 25, true) 
-            DisableControlAction(0, 37, true) 
+            DisableControlAction(0, 24, true)
+            DisableControlAction(0, 25, true)
+            DisableControlAction(0, 37, true)
         else
             if inZone then
                 inZone = false
                 currentZone = nil
                 exports.ox_lib:notify({
                     description = "You have left the green zone.",
-                    type = "success",
-                    duration = 3000
+                    position = "top",
+                    type = "inform"
                 })
             end
 
